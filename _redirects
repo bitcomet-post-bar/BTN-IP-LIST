@@ -1,1 +1,2 @@
-btn-ip-rules.pages.dev/ /pages/index.html 302
+/test /pages/index.html 302
+/favicon.ico /pages/filter.svg 302
