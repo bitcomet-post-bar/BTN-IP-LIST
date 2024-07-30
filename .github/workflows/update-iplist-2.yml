@@ -21,7 +21,7 @@ jobs:
         $content = Invoke-WebRequest -Uri $url -UseBasicParsing | Select-Object -ExpandProperty Content
         
         # 去除注释
-        $cleanedContent = $content -replace "^#.*\n"
+        $cleanedContent = $content -replace "#.*\n"
         
         # 写到文件
         Set-Content -Path "IP-List/BTN-IP-List-all.txt" -Value $cleanedContent -Force
