@@ -1,4 +1,4 @@
-name: syn-to-GitCode
+name: GitCode
 
 on:
   schedule:
@@ -30,7 +30,7 @@ jobs:
           cd ~/TARGET
           git clone git@gitcode.com:ie128480/$REPOURL.git
           cd $REPOURL
-          cp $REPODIR/* ./
+          cp -rf $REPODIR ./
 
           git add .
           git commit -m "Update from GitHub Actions" || exit 0
