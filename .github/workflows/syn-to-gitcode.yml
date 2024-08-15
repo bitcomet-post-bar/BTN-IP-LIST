@@ -30,6 +30,7 @@ jobs:
           cd ~/TARGET
           git clone git@gitcode.com:ie128480/$REPOURL.git
           cd $REPOURL
+          rm -rf *
           cp -rf $REPODIR/* ./
 
           git add .
