@@ -70,6 +70,9 @@ jobs:
       id: check_changes
       run: |
         # 检查哈希文件是否存在 - 如果不存在则直接判定为有变化
+        
+        echo "Raw file exists: $([ -f "IP-List/BTN-IP-List-all-raw.txt.sha256" ] )"
+        
         if [ ! -f "IP-List/BTN-IP-List-all-raw.txt.sha256" ] || [ ! -f "IP-List/BTN-IP-List-all-clean.txt.sha256" ]; then
           echo "Hash files don't exist - changes detected"
           echo "has_changes=true" >> $GITHUB_OUTPUT
