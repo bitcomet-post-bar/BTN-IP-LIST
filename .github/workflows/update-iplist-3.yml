@@ -72,14 +72,14 @@ jobs:
         # 检查哈希文件是否存在 - 如果不存在则直接判定为有变化
         
         # 添加调试输出
-    echo "DEBUG: Checking file existence..."
-    echo "Raw file exists: $([ -f "IP-List/BTN-IP-List-all-raw.txt.sha256" ] && echo "YES" || echo "NO")"
-    echo "Clean file exists: $([ -f "IP-List/BTN-IP-List-all-clean.txt.sha256" ] && echo "YES" || echo "NO")"
+        echo "DEBUG: Checking file existence..."
+        echo "Raw file exists: $([ -f "IP-List/BTN-IP-List-all-raw.txt.sha256" ] && echo "YES" || echo "NO")"
+        echo "Clean file exists: $([ -f "IP-List/BTN-IP-List-all-clean.txt.sha256" ] && echo "YES" || echo "NO")"
         
         if [ ! -f "IP-List/BTN-IP-List-all-raw.txt.sha256" ] || [ ! -f "IP-List/BTN-IP-List-all-clean.txt.sha256" ]; then
           echo "Hash files don't exist - changes detected"
           echo "has_changes=true" >> $GITHUB_OUTPUT
-          #echo "has_changes: ${{ steps.check_changes.outputs.has_changes }}"
+          echo "has_changes: ${{ steps.check_changes.outputs.has_changes }}"
           exit 0
         fi
         
