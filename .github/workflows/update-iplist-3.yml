@@ -19,15 +19,7 @@ jobs:
       id: check_changes
       run: |
         # 检查哈希文件是否存在 - 如果不存在则直接判定为有变化
-        
-        # 添加调试输出
-        
-        if [ ! -f "IP-List/BTN-IP-List-all-raw.txt.sha256" ];then
-         echo "文件不存在"
-         else
-         echo "文件存在"
-        fi
-        
+
         if [ ! -f "IP-List/BTN-IP-List-all-raw.txt.sha256" ] || [ ! -f "IP-List/BTN-IP-List-all-clean.txt.sha256" ]; then
           echo "Hash files don't exist - changes detected"
           echo "has_changes=true" >> $GITHUB_OUTPUT
@@ -107,13 +99,7 @@ jobs:
         
 
 
-    - name: Debug output
-      run: |
-        echo "Process step outputs:"
-        echo "raw_hash: ${{ steps.process.outputs.raw_hash }}"
-        echo "clean_hash: ${{ steps.process.outputs.clean_hash }}"
-        echo "Check changes step outputs:"
-        echo "has_changes: ${{ steps.check_changes.outputs.has_changes }}"
+
         
     - name: Commit and Push Changes
       if: ${{ steps.check_changes.outputs.has_changes == 'true' }}
