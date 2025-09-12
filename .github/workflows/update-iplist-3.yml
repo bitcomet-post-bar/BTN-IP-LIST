@@ -79,7 +79,7 @@ jobs:
         if [ ! -f "IP-List/BTN-IP-List-all-raw.txt.sha256" ] || [ ! -f "IP-List/BTN-IP-List-all-clean.txt.sha256" ]; then
           echo "Hash files don't exist - changes detected"
           echo "has_changes=true" >> $GITHUB_OUTPUT
-          echo "has_changes: ${{ steps.check_changes.outputs.has_changes }}"
+          #echo "has_changes: ${{ steps.check_changes.outputs.has_changes }}"
           exit 0
         fi
         
