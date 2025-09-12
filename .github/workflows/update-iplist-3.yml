@@ -1,0 +1,26 @@
+name: update-IPlist
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+
+jobs:
+  process-IPlist:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      
+    - name: Update IP list
+      run: |
+        mkdir -p IP-List
+        curl -s "https://raw.githubusercontent.com/PBH-BTN/BTN-Collected-Rules/main/combine/all.txt" | \
+        grep -v '^#' > IP-List/BTN-IP-List-all-Simplified.txt
+        
+    - uses: actions-js/push@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: main
+        message: "Update IPlist"
+        directory: .
