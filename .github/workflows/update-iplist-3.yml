@@ -65,7 +65,8 @@ jobs:
         echo "clean_hash=$clean_hash" >> $GITHUB_OUTPUT
         echo "raw_count=$raw_count" >> $GITHUB_OUTPUT
         echo "clean_count=$clean_count" >> $GITHUB_OUTPUT
-        
+    fi
+    
 - name: Check for changes using hash files
   id: check_changes
   run: |
