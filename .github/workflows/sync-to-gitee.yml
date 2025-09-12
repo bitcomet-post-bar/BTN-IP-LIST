@@ -1,8 +1,7 @@
 name: sync-to-gitee
 
 on:
-  schedule:
-    - cron: '*/150 * * * *' # every 120 minutes
+  push:
   workflow_dispatch: # on button click
 
 jobs:
