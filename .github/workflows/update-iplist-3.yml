@@ -38,7 +38,8 @@ jobs:
           exit 1
         fi
         
-    - name: Process IP list
+    - name: Process IP list and generate hashes
+      id: process
       run: |
         # 创建去除注释的版本
         grep -v '^#' IP-List/BTN-IP-List-all-raw.txt > IP-List/BTN-IP-List-all-clean.txt
@@ -55,20 +56,48 @@ jobs:
         raw_hash=$(sha256sum IP-List/BTN-IP-List-all-raw.txt | cut -d' ' -f1)
         clean_hash=$(sha256sum IP-List/BTN-IP-List-all-clean.txt | cut -d' ' -f1)
         
-        # 创建包含哈希值的README文件
-        echo "# IP List Files" > IP-List/README.md
-        echo "## Generated: $(date)" >> IP-List/README.md
-        echo "### BTN-IP-List-all-raw.txt" >> IP-List/README.md
-        echo "- SHA256: $raw_hash" >> IP-List/README.md
-        echo "- Lines: $raw_count" >> IP-List/README.md
-        echo "### BTN-IP-List-all-clean.txt" >> IP-List/README.md
-        echo "- SHA256: $clean_hash" >> IP-List/README.md
-        echo "- Lines: $clean_count" >> IP-List/README.md
+        # 将哈希值写入单独的文件
+        echo "$raw_hash" > IP-List/BTN-IP-List-all-raw.txt.sha256
+        echo "$clean_hash" > IP-List/BTN-IP-List-all-clean.txt.sha256
         
+        # 输出哈希值供后续步骤使用
+        echo "raw_hash=$raw_hash" >> $GITHUB_OUTPUT
+        echo "clean_hash=$clean_hash" >> $GITHUB_OUTPUT
+        
+    - name: Check for changes using hash files
+      id: check_changes
+      run: |
+        # 检查哈希文件是否存在
+        if [ ! -f "IP-List/BTN-IP-List-all-raw.txt.sha256" ] || [ ! -f "IP-List/BTN-IP-List-all-clean.txt.sha256" ]; then
+          echo "Hash files don't exist - changes detected"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+        
+        # 读取之前保存的哈希值
+        previous_raw_hash=$(cat IP-List/BTN-IP-List-all-raw.txt.sha256)
+        previous_clean_hash=$(cat IP-List/BTN-IP-List-all-clean.txt.sha256)
+        
+        # 获取当前哈希值
+        current_raw_hash="${{ steps.process.outputs.raw_hash }}"
+        current_clean_hash="${{ steps.process.outputs.clean_hash }}"
+        
+        # 比较哈希值
+        if [ "$current_raw_hash" = "$previous_raw_hash" ] && [ "$current_clean_hash" = "$previous_clean_hash" ]; then
+          echo "No changes detected based on hash comparison"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "Changes detected based on hash comparison"
+          echo "Raw hash changed: $previous_raw_hash -> $current_raw_hash"
+          echo "Clean hash changed: $previous_clean_hash -> $current_clean_hash"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+        fi
+
     - name: Commit and Push Changes
+      if: steps.check_changes.outputs.has_changes == 'true'
       uses: actions-js/push@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: main
-        message: "Update IPlist - $(date +'%Y-%m-%d %H:%M') - Raw: $raw_count, Clean: $clean_count"
+        message: "Update IPlist - $(date +'%Y-%m-%d %H:%M') - Raw: ${{ steps.process.outputs.raw_count }}, Clean: ${{ steps.process.outputs.clean_count }}"
         directory: .
