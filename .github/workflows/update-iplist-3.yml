@@ -23,7 +23,7 @@ jobs:
         
         until [ $retry_count -ge $max_retries ]
         do
-          if curl -s "https://raw.githubusercontent.com/PBH-BTN/BTN-Collected-Rules/main/combine/all.txt" -o IP-List/BTN-IP-List-all-raw.txt; then
+          if curl -s "https://raw.githubusercontent.com/PBH-BTN/BTN-Collected-Rules/main/combine/all.txt" -o IP-List/BTN-IP-List-all-original.txt; then
             echo "Download successful"
             break
           else
@@ -42,11 +42,11 @@ jobs:
       id: process
       run: |
         # 创建去除注释的版本
-        grep -v '^#' IP-List/BTN-IP-List-all-raw.txt > IP-List/BTN-IP-List-all-clean.txt
+        grep -v '^#' IP-List/BTN-IP-List-all-original.txt > IP-List/BTN-IP-List-all-simplified.txt
         
         # 统计信息
-        raw_count=$(wc -l < IP-List/BTN-IP-List-all-raw.txt)
-        clean_count=$(wc -l < IP-List/BTN-IP-List-all-clean.txt)
+        raw_count=$(wc -l < IP-List/BTN-IP-List-all-original.txt)
+        clean_count=$(wc -l < IP-List/BTN-IP-List-all-simplified.txt)
         comment_count=$((raw_count - clean_count))
         echo "原始文件行数: $raw_count"
         echo "清理后行数: $clean_count"
