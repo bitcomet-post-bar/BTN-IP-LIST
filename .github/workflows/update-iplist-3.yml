@@ -15,9 +15,10 @@ jobs:
       with:
         fetch-depth: 0 # 获取完整历史记录以便比较更改
       
-      
     - name: Download with retry
       run: |
+        until [ $retry_count -ge $max_retries ]
+        do
           if curl -s "https://raw.githubusercontent.com/PBH-BTN/BTN-Collected-Rules/main/combine/all.txt" -o IP-List/BTN-IP-List-all-raw.txt; then
             echo "Download successful"
             break
