@@ -15,6 +15,45 @@ jobs:
       with:
         fetch-depth: 0 # 获取完整历史记录以便比较更改
       
+    - name: Check for changes using hash files
+      id: check_changes
+      run: |
+        # 检查哈希文件是否存在 - 如果不存在则直接判定为有变化
+        
+        # 添加调试输出
+        
+        if [ ! -f "IP-List/BTN-IP-List-all-raw.txt.sha256" ];then
+         echo "文件不存在"
+         else
+         echo "文件存在"
+        fi
+        
+        if [ ! -f "IP-List/BTN-IP-List-all-raw.txt.sha256" ] || [ ! -f "IP-List/BTN-IP-List-all-clean.txt.sha256" ]; then
+          echo "Hash files don't exist - changes detected"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+          echo "has_changes: ${{ steps.check_changes.outputs.has_changes }}"
+          exit 0
+        fi
+        
+        # 读取之前保存的哈希值
+        previous_raw_hash=$(cat IP-List/BTN-IP-List-all-raw.txt.sha256)
+        previous_clean_hash=$(cat IP-List/BTN-IP-List-all-clean.txt.sha256)
+        
+        # 获取当前哈希值
+        current_raw_hash="${{ steps.process.outputs.raw_hash }}"
+        current_clean_hash="${{ steps.process.outputs.clean_hash }}"
+        
+        # 比较哈希值
+        if [ "$current_raw_hash" = "$previous_raw_hash" ] && [ "$current_clean_hash" = "$previous_clean_hash" ]; then
+          echo "No changes detected based on hash comparison"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "Changes detected based on hash comparison"
+          echo "Raw hash changed: $previous_raw_hash -> $current_raw_hash"
+          echo "Clean hash changed: $previous_clean_hash -> $current_clean_hash"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+        fi
+      
     - name: Download with retry
       run: |
         mkdir -p IP-List
@@ -66,44 +105,7 @@ jobs:
         echo "raw_count=$raw_count" >> $GITHUB_OUTPUT
         echo "clean_count=$clean_count" >> $GITHUB_OUTPUT
         
-    - name: Check for changes using hash files
-      id: check_changes
-      run: |
-        # 检查哈希文件是否存在 - 如果不存在则直接判定为有变化
-        
-        # 添加调试输出
-        
-        if [ ! -f "IP-List/BTN-IP-List-all-raw.txt.sha256" ];then
-         echo "文件不存在"
-         else
-         echo "文件存在"
-        fi
-        
-        if [ ! -f "IP-List/BTN-IP-List-all-raw.txt.sha256" ] || [ ! -f "IP-List/BTN-IP-List-all-clean.txt.sha256" ]; then
-          echo "Hash files don't exist - changes detected"
-          echo "has_changes=true" >> $GITHUB_OUTPUT
-          echo "has_changes: ${{ steps.check_changes.outputs.has_changes }}"
-          exit 0
-        fi
-        
-        # 读取之前保存的哈希值
-        previous_raw_hash=$(cat IP-List/BTN-IP-List-all-raw.txt.sha256)
-        previous_clean_hash=$(cat IP-List/BTN-IP-List-all-clean.txt.sha256)
-        
-        # 获取当前哈希值
-        current_raw_hash="${{ steps.process.outputs.raw_hash }}"
-        current_clean_hash="${{ steps.process.outputs.clean_hash }}"
-        
-        # 比较哈希值
-        if [ "$current_raw_hash" = "$previous_raw_hash" ] && [ "$current_clean_hash" = "$previous_clean_hash" ]; then
-          echo "No changes detected based on hash comparison"
-          echo "has_changes=false" >> $GITHUB_OUTPUT
-        else
-          echo "Changes detected based on hash comparison"
-          echo "Raw hash changed: $previous_raw_hash -> $current_raw_hash"
-          echo "Clean hash changed: $previous_clean_hash -> $current_clean_hash"
-          echo "has_changes=true" >> $GITHUB_OUTPUT
-        fi
+
 
     - name: Debug output
       run: |
