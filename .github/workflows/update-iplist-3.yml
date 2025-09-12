@@ -17,6 +17,9 @@ jobs:
       
     - name: Download with retry
       run: |
+        mkdir -p IP-List
+        max_retries=3
+        retry_count=0
         
         until [ $retry_count -ge $max_retries ]
         do
