@@ -16,5 +16,5 @@
 ## 许可证
 
 [CC BY-SA 4.0 ](https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans)共享协议  
-<img src="./by-sa.png" width=88 height=31 />
+<img src="./by-sa.svg" width=100 height=35 />
 
