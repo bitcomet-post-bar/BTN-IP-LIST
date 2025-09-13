@@ -41,8 +41,8 @@ jobs:
     - name: Process IP list and generate hashes
       id: process
       run: |
-        # 创建去除注释的版本
-        grep -v '^#' IP-List/BTN-IP-List-all-original.txt > IP-List/BTN-IP-List-all-simplified.txt
+        # 创建去除注释和空行的版本
+        grep -v -e '^#' -e '^$' IP-List/BTN-IP-List-all-original.txt > IP-List/BTN-IP-List-all-simplified.txt
         
         # 统计信息
         raw_count=$(wc -l < IP-List/BTN-IP-List-all-original.txt)
