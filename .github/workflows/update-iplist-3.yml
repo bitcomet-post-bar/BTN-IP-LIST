@@ -71,5 +71,5 @@ jobs:
     - name: Trigger Other Workflow-gitcode
       uses: benc-uk/workflow-dispatch@v1
       with:
-        workflow: sync-to-gitcode.yml # 其他工作流的文件名
+        workflow: syn-to-gitcode.yml # 其他工作流的文件名
         token: ${{ secrets.GITHUB_TOKEN }}
