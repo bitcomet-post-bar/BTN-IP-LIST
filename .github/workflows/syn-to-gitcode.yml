@@ -27,7 +27,7 @@ jobs:
           REPODIR=$PWD
           mkdir ~/TARGET
           cd ~/TARGET
-          git clone git@gitcode.com:ie128480/$REPOURL.git
+          git clone git@gitcode.com:bitcomet-post-bar/$REPOURL.git
           cd $REPOURL
           rm -rf *
           cp -rf $REPODIR/* ./
