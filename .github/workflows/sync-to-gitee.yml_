@@ -12,8 +12,8 @@ jobs:
        - name: Mirror the Github organization repos to Gitee.
          uses: Yikun/hub-mirror-action@master
          with:
-              src: github/ie123610
-              dst: gitee/ie128480_0
+              src: github/bitcomet-post-bar
+              dst: gitee/bitcomet-post-bar
               dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
               dst_token: ${{ secrets.GITEE_TOKEN }}
               account_type: user
