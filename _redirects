@@ -1,1 +1,4 @@
-/favicon.ico /pages/filter.svg 302
+/favicon.ico /filter.svg 302
+# / /pages/ 302
+# /index.html /pages/ 302
+# /index.htm /pages/ 302
