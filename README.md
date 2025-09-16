@@ -9,8 +9,8 @@
 ## 链接
 
 * [Github仓库页面](https://github.com/ie123610/BTN-IP-LIST)
-* [Gitee镜像页面](https://gitee.com/ie128480_0/BTN-IP-LIST)
-* [Gitcode镜像页面](https://gitcode.com/ie128480/BTN-IP-LIST/overview)
+* [Gitee镜像页面](https://gitee.com/bitcomet-post-bar/BTN-IP-LIST)
+* [Gitcode镜像页面](https://gitcode.com/bitcomet-post-bar/BTN-IP-LIST)
 * [Cloudflare Pages 页面](https://btn-iplist.36102025.xyz)
 
 ## 许可证
