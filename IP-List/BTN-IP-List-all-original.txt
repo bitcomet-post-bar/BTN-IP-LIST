@@ -1,5 +1,33 @@
-# PBH-BTN/BTN-Collected-Rules, Licensed under CC-BY 4.0. Generated at 2026-11-10 03:31:10 UTC.
+# PBH-BTN/BTN-Collected-Rules, Licensed under CC-BY 4.0. Generated at 2026-11-10 10:31:09 UTC.
 # [START] Auto merged CIDR - IPV4: 24, IPV6: 52
+
+# concurrent-downloads-ips.txt
+# [Sparkle3 并发下载在线分析] 过去给定时间内并发下载计数: 88, 标记人数: 6, BTN 网络发送到此 Peer 的总流量: 552.0 MiB, BTN 网络从此 Peer 接收的总流量: 0 B
+1.80.223.189
+# concurrent-downloads-ips.txt
+# [Sparkle3 并发下载在线分析] 过去给定时间内并发下载计数: 225, 标记人数: 30, BTN 网络发送到此 Peer 的总流量: 295.2 MiB, BTN 网络从此 Peer 接收的总流量: 0 B
+5.175.211.163
+# concurrent-downloads-ips.txt
+# [Sparkle3 并发下载在线分析] 过去给定时间内并发下载计数: 107, 标记人数: 3, BTN 网络发送到此 Peer 的总流量: 4.9 GiB, BTN 网络从此 Peer 接收的总流量: 0 B
+123.114.101.7
+# concurrent-downloads-ips.txt
+# [Sparkle3 并发下载在线分析] 过去给定时间内并发下载计数: 94, 标记人数: 5, BTN 网络发送到此 Peer 的总流量: 3.0 GiB, BTN 网络从此 Peer 接收的总流量: 0 B
+123.131.146.120
+# concurrent-downloads-ips.txt
+# [Sparkle3 并发下载在线分析] 过去给定时间内并发下载计数: 141, 标记人数: 58, BTN 网络发送到此 Peer 的总流量: 6.4 GiB, BTN 网络从此 Peer 接收的总流量: 0 B
+125.228.95.28
+# concurrent-downloads-ips.txt
+# [Sparkle3 并发下载在线分析] 过去给定时间内并发下载计数: 134, 标记人数: 6, BTN 网络发送到此 Peer 的总流量: 2.0 GiB, BTN 网络从此 Peer 接收的总流量: 0 B
+143.244.117.62
+# concurrent-downloads-ips.txt
+# [Sparkle3 并发下载在线分析] 过去给定时间内并发下载计数: 81, 标记人数: 9, BTN 网络发送到此 Peer 的总流量: 251.1 MiB, BTN 网络从此 Peer 接收的总流量: 6.0 MiB
+183.23.158.235
+# concurrent-downloads-ips.txt
+# [Sparkle3 并发下载在线分析] 过去给定时间内并发下载计数: 280, 标记人数: 5, BTN 网络发送到此 Peer 的总流量: 2.9 GiB, BTN 网络从此 Peer 接收的总流量: 0 B
+218.71.225.170
+# concurrent-downloads-ips.txt
+# [Sparkle3 并发下载在线分析] 过去给定时间内并发下载计数: 82, 标记人数: 16, BTN 网络发送到此 Peer 的总流量: 2.3 GiB, BTN 网络从此 Peer 接收的总流量: 48.0 KiB
+223.112.131.221
 
 # untrusted-ips.txt
 # [Sparkle3 不受信任投票] 封禁计数: 6, 不信任票数: 5, 合并记录数量: 1, BTN网络发送到此Peer流量: 10.5 GiB, BTN网络从此Peer获取流量: 2.6 GiB
@@ -470,7 +498,7 @@
 # [Sparkle3 不受信任投票] 封禁计数: 6, 不信任票数: 5, 合并记录数量: 1, BTN网络发送到此Peer流量: 3.2 GiB, BTN网络从此Peer获取流量: 0 B
 240b:250:47a0:b000::/56
 # untrusted-ips.txt
-# [Sparkle3 不受信任投票] 封禁计数: 77, 不信任票数: 19, 合并记录数量: 1, BTN网络发送到此Peer流量: 167.8 GiB, BTN网络从此Peer获取流量: 0 B
+# [Sparkle3 不受信任投票] 封禁计数: 78, 不信任票数: 20, 合并记录数量: 1, BTN网络发送到此Peer流量: 170.0 GiB, BTN网络从此Peer获取流量: 0 B
 240e:f7:c000:300::/56
 # untrusted-ips.txt
 # [Sparkle3 不受信任投票] 封禁计数: 8, 不信任票数: 6, 合并记录数量: 1, BTN网络发送到此Peer流量: 4.3 GiB, BTN网络从此Peer获取流量: 0 B
@@ -671,15 +699,11 @@
 221.229.52.0/24
 
 # overdownload-ips.txt
-# [Sparkle3 过量下载在线分析]  过量下载比率: 5196.85% (100% = 完整下载一次种子大小)BTN 网络发送到此 Peer 的流量: 14.7 GiB, BTN 网络从此 Peer 接收的流量: 0 B
+# [Sparkle3 过量下载在线分析]  过量下载比率: 6477.88% (100% = 完整下载一次种子大小)BTN 网络发送到此 Peer 的流量: 18.4 GiB, BTN 网络从此 Peer 接收的流量: 0 B
 116.237.220.99
 # overdownload-ips.txt
 # [Sparkle3 过量下载在线分析]  过量下载比率: 37319.19% (100% = 完整下载一次种子大小)BTN 网络发送到此 Peer 的流量: 32.2 GiB, BTN 网络从此 Peer 接收的流量: 0 B
 117.86.125.8
-
-# concurrent-downloads-ips.txt
-# [Sparkle3 并发下载在线分析] 过去给定时间内并发下载计数: 97, 标记人数: 35, BTN 网络发送到此 Peer 的总流量: 3.1 GiB, BTN 网络从此 Peer 接收的总流量: 0 B
-118.166.235.22
 
 # [Merged Comment]
 # Datacenter qBittorrent/4.6.7
